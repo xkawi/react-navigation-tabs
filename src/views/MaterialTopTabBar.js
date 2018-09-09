@@ -57,7 +57,7 @@ export default class TabBarTop extends React.PureComponent<Props> {
             labelStyle,
             allowFontScaling,
         } = this.props;
-      
+
       // if the root.key is included in the tabKeyToHideLabel string then it won't render
         if (showLabel === false || tabKeyToHideLabel.includes(route.key)) {
             return null;
@@ -67,15 +67,15 @@ export default class TabBarTop extends React.PureComponent<Props> {
         const index = routes.indexOf(route);
         const focused = index === navigation.state.index;
 
-        // Prepend '-1', so there are always at least 2 items in inputRange
-        const inputRange = [-1, ...routes.map((x, i) => i)];
-        const outputRange = inputRange.map(
-            inputIndex => (inputIndex === index ? activeTintColor : inactiveTintColor)
-        );
-        const color = position.interpolate({
-            inputRange,
-            outputRange: outputRange,
-        });
+    // Prepend '-1', so there are always at least 2 items in inputRange
+    const inputRange = [-1, ...routes.map((x, i) => i)];
+    const outputRange = inputRange.map(
+      inputIndex => (inputIndex === index ? activeTintColor : inactiveTintColor)
+    );
+    const color = position.interpolate({
+      inputRange,
+      outputRange: outputRange,
+    });
 
         const tintColor = focused ? activeTintColor : inactiveTintColor;
         const label = this.props.getLabelText({ route });
